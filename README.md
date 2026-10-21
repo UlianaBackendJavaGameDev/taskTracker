@@ -1,15 +1,16 @@
 # Console Task Tracker (Java Core Architecture Showcase)
 
-A robust, console-based Task Management System built with pure Java SE. This project is designed to showcase modern object-oriented programming (OOP) principles, clean code architecture, and foundational enterprise design patterns without relying on heavy frameworks like Spring.
+A robust, console-based Task Management System built with pure Java SE. This project is designed to showcase modern object-oriented programming (OOP) principles, clean code architecture, foundational enterprise design patterns, and persistent state management without relying on heavy frameworks like Spring.
 
 ## 🚀 Key Architectural Features Implemented
 
-*   **Dependency Injection (DI):** De-coupled business logic (`TaskService`) from data storage (`TaskRepository`) via constructor injection. This makes the architecture flexible, maintainable, and open for future database integration (e.g., Hibernate).
-*   **Builder Pattern:** Implemented a custom nested `Builder` class for the `Task` entity to provide a clean, fluent API for object creation, avoiding the "telescoping constructor" anti-pattern.
-*   **Singleton Pattern:** Covered the `InMemoryTaskRepository` with a thread-safe-ready Singleton structure (`getInstance()`) to guarantee a single source of truth for in-memory data across the entire application.
-*   **Robust Exception Handling & Validation:** Utilized clean input validation with runtime exceptions (`IllegalArgumentException`) to prevent system misbehavior (e.g., handling negative IDs) alongside proper `try-catch` blocks.
-*   **Modern Java Features:** Leveraged `java.util.Optional` API (`ifPresentOrElse`) for clean, safe handling of nullable data and preventing the infamous `NullPointerException`.
-*   **Java Collections Framework:** Managed in-memory state using heavily optimized core interfaces (`List` / `ArrayList`).
+*   **Java I/O Streams (Persistent Storage):** Migrated from temporary RAM storage to hard drive persistence. Implemented `FileTaskRepository` using `BufferedReader`, `PrintWriter`, and `FileWriter` with clean string parsing (`split("\\|")`) to store tasks securely inside a local `task.txt` file. State is preserved perfectly across application restarts.
+*   **Dependency Injection (DI):** Demonstrated loose coupling by binding the business logic (`TaskService`) to the data layer via the `TaskRepository` interface using constructor injection. Switching from in-memory arrays to local files required changing exactly one line of code in the `Main` launcher.
+*   **Builder Pattern:** Implemented a custom static nested `Builder` class inside the `Task` entity to provide a clean, fluent API for object generation. This prevents the "telescoping constructor" anti-pattern and handles multi-field parameters beautifully.
+*   **Singleton Pattern:** Secured the data repository structure using a classic thread-safe-ready Singleton setup (`getInstance()`) ensuring a single source of truth for repository components where required.
+*   **Robust Exception Handling & Validation:** Utilized precise data input validation at the service boundary. The application actively checks for semantic errors (like negative IDs) and throws an un-checked `IllegalArgumentException`, which is caught via structured `try-catch` blocks to ensure fault tolerance.
+*   **Modern Java Safety:** Extensively utilized `java.util.Optional` API (`ifPresentOrElse`) to handle query misses safely, eliminating the risk of `NullPointerException`.
+*   **Java Collections Framework:** Managed execution states natively through core interfaces (`List` / `ArrayList`).
 
 ## 🛠️ Technology Stack
 
@@ -24,5 +25,5 @@ A robust, console-based Task Management System built with pure Java SE. This pro
    git clone https://github.com
    ```
 2. Open the project root folder in IntelliJ IDEA.
-3. Locate the `Main.java` file inside the package/directory.
-4. Run the `main` method. The application will execute a series of simulated lifecycle steps (creating tasks, completing tasks, verifying error boundaries) and print clean logs directly to the system console.
+3. Locate the `Main.java` file and click **Run**.
+4. The system will read existing data from `task.txt`, simulate a standard backend workflow (creating tasks, completing tasks, verifying error handling with `try-catch`), and safely update the file back on your disk.
