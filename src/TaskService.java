@@ -4,6 +4,7 @@ import java.util.Optional;
 public class TaskService {
     private final TaskRepository repository;
 
+
     public TaskService(TaskRepository repository){
         this.repository = repository;
     }
@@ -17,16 +18,16 @@ public class TaskService {
         repository.save(newTask);
     }
     public void completeTask(int id){
+        if (id <= 0){
+            throw new IllegalArgumentException("ID задачи должен быть больше нуля! Передано: " + id);
+        }
         Optional<Task> taskOptional = repository.findById(id);
-
         taskOptional.ifPresentOrElse(
                 task -> {
                     task.setCompleated(true);
                     System.out.println("Сервис: Задача с ID " + id + " отмечена как выполненная.");
                 },
-                () -> {
-                    System.out.println("Сервис ОШИБКА: Задача с ID " + id + " не найдена в системе!");
-                }
+                () -> System.out.printf("Сервис ОШИБКА: Задача с ID %d не найдена в системе!%n", id)
         );
     }
     public  void printAllTasks(){

@@ -23,5 +23,15 @@ public class Main{
 
         System.out.println("\n--- Шаг 6: Финальный просмотр списка задач ---");
         taskService.printAllTasks();
+
+        System.out.println("\\n--- Шаг 7: Тестируем наше исключение ---");
+
+        try{
+            taskService.completeTask(-10);
+        } catch (IllegalArgumentException e){
+            System.out.println("Перехвачено исключение в классе Main: " + e.getMessage());
+
+        }
+        System.out.println("\n[КОНЕЦ] Программа не упала и успешно завершила работу!");
     }
 }
