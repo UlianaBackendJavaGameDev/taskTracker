@@ -25,6 +25,7 @@ public class TaskService {
         taskOptional.ifPresentOrElse(
                 task -> {
                     task.setCompleated(true);
+                    repository.save(task);
                     System.out.println("Сервис: Задача с ID " + id + " отмечена как выполненная.");
                 },
                 () -> System.out.printf("Сервис ОШИБКА: Задача с ID %d не найдена в системе!%n", id)

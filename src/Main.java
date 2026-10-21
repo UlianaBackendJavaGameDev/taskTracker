@@ -1,9 +1,12 @@
 public class Main{
     public static void main(String[] args){
-        TaskRepository repository = InMemoryTaskRepositity.getInstance();
+//        TaskRepository repository = InMemoryTaskRepositity.getInstance();
+
+//        TaskService taskService = new TaskService(repository);
+
+        TaskRepository repository = new FileTaskRepository();
 
         TaskService taskService = new TaskService(repository);
-
         System.out.println("--- Шаг 1: Проверяем пустой список ---");
         taskService.printAllTasks();
 
