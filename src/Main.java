@@ -1,10 +1,15 @@
+import tasktracker.model.Task;
+import tasktracker.repository.FileTaskRepository;
+import tasktracker.repository.TaskRepository;
+import tasktracker.service.TaskService;
+
 import java.util.List;
 
 public class Main{
     public static void main(String[] args){
-//        TaskRepository repository = InMemoryTaskRepositity.getInstance();
+//        tasktracker.repository.TaskRepository repository = tasktracker.repository.InMemoryTaskRepositity.getInstance();
 
-//        TaskService taskService = new TaskService(repository);
+//        tasktracker.service.TaskService taskService = new tasktracker.service.TaskService(repository);
 
         TaskRepository repository = new FileTaskRepository();
 

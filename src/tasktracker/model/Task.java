@@ -1,4 +1,4 @@
-import java.util.Locale;
+package tasktracker.model;
 
 public class Task {
     private final int id;

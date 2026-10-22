@@ -1,3 +1,7 @@
+package tasktracker.repository;
+
+import tasktracker.model.Task;
+
 import java.util.List;
 import java.util.Optional;
 
