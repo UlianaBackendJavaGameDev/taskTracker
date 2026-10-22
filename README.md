@@ -4,14 +4,14 @@ A robust, console-based Task Management System built with pure Java SE. This pro
 
 ## 🚀 Key Architectural Features Implemented
 
-*   **Functional Programming & Stream API:** Heavily utilized Java 8+ Streams and lambda expressions (`->`) for clean, declarative data processing. Implemented fluent pipelines to filter tasks dynamically by author without nested loops, and mapped objects into text arrays (`map(Task::getTitle)`) to showcase professional data manipulation techniques.
+*   **Functional Programming & Stream API:** Heavily utilized Java 8+ Functional Programming paradigms. Implemented declarative data pipelines using Stream API and custom lambda expressions (`->`). Showcased functional transformations using `Function` mappers (transforming `Task` entities into `String` titles via `.map()`) and `Predicate` filters for clean, side-effect-free data processing.
+*   **Generics (Generics Framework):** Created a custom generic container (`Box<T>`) to demonstrate compile-time type safety and code reusability. Showcased how Java enforces strict type checking for distinct models (handling both `String` and `Task` types) without runtime type casting.
 *   **Java I/O Streams (Persistent Storage):** Migrated from temporary RAM storage to hard drive persistence. Implemented `FileTaskRepository` using `BufferedReader`, `PrintWriter`, and `FileWriter` with clean string parsing (`split("\\|")`) to store tasks securely inside a local `task.txt` file. State is preserved perfectly across application restarts.
 *   **Dependency Injection (DI):** Demonstrated loose coupling by binding the business logic (`TaskService`) to the data layer via the `TaskRepository` interface using constructor injection. Switching from in-memory arrays to local files required changing exactly one line of code in the `Main` launcher.
 *   **Builder Pattern:** Implemented a custom static nested `Builder` class inside the `Task` entity to provide a clean, fluent API for object generation. This prevents the "telescoping constructor" anti-pattern and handles multi-field parameters beautifully.
 *   **Singleton Pattern:** Secured the data repository structure using a classic thread-safe-ready Singleton setup (`getInstance()`) ensuring a single source of truth for repository components where required.
 *   **Robust Exception Handling & Validation:** Utilized precise data input validation at the service boundary. The application actively checks for semantic errors (like negative IDs) and throws an un-checked `IllegalArgumentException`, which is caught via structured `try-catch` blocks to ensure fault tolerance.
 *   **Modern Java Safety:** Extensively utilized `java.util.Optional` API (`ifPresentOrElse`) to handle query misses safely, eliminating the risk of `NullPointerException`.
-*   **Java Collections Framework:** Managed execution states natively through core interfaces (`List` / `ArrayList`).
 
 ## 🛠️ Technology Stack
 
@@ -27,4 +27,4 @@ A robust, console-based Task Management System built with pure Java SE. This pro
    ```
 2. Open the project root folder in IntelliJ IDEA.
 3. Locate the `Main.java` file and click **Run**.
-4. The system will read existing data from `task.txt`, simulate a standard backend workflow (creating tasks, completing tasks, running custom Stream API queries, and verifying error handling with `try-catch`), and safely update the file back on your disk.
+4. The system will read existing data from `task.txt`, simulate a standard backend workflow (creating tasks, completing tasks, running custom Stream API functional queries, executing Generic tests, and verifying error handling with `try-catch`), and safely update the file back on your disk.
