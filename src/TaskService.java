@@ -42,4 +42,17 @@ public class TaskService {
             }
         }
     }
+    public List<String> getCompletedTaskTitles(){
+        List<Task> allTasks = repository.findAll();
+
+        return allTasks.stream()
+                .filter(task -> task.isCompleated())
+                .map(task -> task.getTitle())
+                .collect(java.util.stream.Collectors.toList());
+    }
+    public List<Task> getTaskByAuthor(String authorName){
+        return repository.findAll().stream()
+                .filter(task -> task.getAuthor() != null && task.getAuthor().equalsIgnoreCase(authorName))
+                .collect(java.util.stream.Collectors.toList());
+    }
 }

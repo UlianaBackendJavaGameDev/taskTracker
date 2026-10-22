@@ -22,6 +22,9 @@ public class Task {
     public int getId(){return  id;}
     public String getTitle(){return title;}
     public  boolean isCompleated(){return  isCompleated;}
+    public String getAuthor(){
+        return this.author;
+    }
 
     public void setCompleated(boolean completed){
         this.isCompleated = completed;
@@ -59,6 +62,7 @@ public class Task {
             this.author = author;
             return this;
         }
+
         public Task build(){
             return new Task(this);
         }

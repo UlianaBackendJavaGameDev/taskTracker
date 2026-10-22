@@ -1,9 +1,10 @@
 # Console Task Tracker (Java Core Architecture Showcase)
 
-A robust, console-based Task Management System built with pure Java SE. This project is designed to showcase modern object-oriented programming (OOP) principles, clean code architecture, foundational enterprise design patterns, and persistent state management without relying on heavy frameworks like Spring.
+A robust, console-based Task Management System built with pure Java SE. This project is designed to showcase modern object-oriented programming (OOP) principles, clean code architecture, foundational enterprise design patterns, persistent state management, and functional programming concepts without relying on heavy frameworks like Spring.
 
 ## 🚀 Key Architectural Features Implemented
 
+*   **Functional Programming & Stream API:** Heavily utilized Java 8+ Streams and lambda expressions (`->`) for clean, declarative data processing. Implemented fluent pipelines to filter tasks dynamically by author without nested loops, and mapped objects into text arrays (`map(Task::getTitle)`) to showcase professional data manipulation techniques.
 *   **Java I/O Streams (Persistent Storage):** Migrated from temporary RAM storage to hard drive persistence. Implemented `FileTaskRepository` using `BufferedReader`, `PrintWriter`, and `FileWriter` with clean string parsing (`split("\\|")`) to store tasks securely inside a local `task.txt` file. State is preserved perfectly across application restarts.
 *   **Dependency Injection (DI):** Demonstrated loose coupling by binding the business logic (`TaskService`) to the data layer via the `TaskRepository` interface using constructor injection. Switching from in-memory arrays to local files required changing exactly one line of code in the `Main` launcher.
 *   **Builder Pattern:** Implemented a custom static nested `Builder` class inside the `Task` entity to provide a clean, fluent API for object generation. This prevents the "telescoping constructor" anti-pattern and handles multi-field parameters beautifully.
@@ -26,4 +27,4 @@ A robust, console-based Task Management System built with pure Java SE. This pro
    ```
 2. Open the project root folder in IntelliJ IDEA.
 3. Locate the `Main.java` file and click **Run**.
-4. The system will read existing data from `task.txt`, simulate a standard backend workflow (creating tasks, completing tasks, verifying error handling with `try-catch`), and safely update the file back on your disk.
+4. The system will read existing data from `task.txt`, simulate a standard backend workflow (creating tasks, completing tasks, running custom Stream API queries, and verifying error handling with `try-catch`), and safely update the file back on your disk.
